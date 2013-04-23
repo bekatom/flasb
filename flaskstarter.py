@@ -4,7 +4,7 @@ import os
 import flask_sijax
 
 app = Flask(__name__)
-app.config.from_object('config.ProductionConfigHome')
+app.config.from_object('config.ProductionConfig')
 
 path = os.path.join('.', os.path.dirname(__file__), 'static/js/sijax/')
 app.config['SIJAX_STATIC_PATH'] = path
