@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+    {{ message }}
+
+    <form method="post" action="/contact" class="form-horizontal">
+        <fieldset>
+
+            <div class="control-group">
+                <label class="control-label" for="inputEmail">Email</label>
+                <div class="controls">
+                    <input type="text" id="inputEmail" placeholder="Email">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="subject">Subject</label>
+                <div class="controls">
+                    <input type="text" id="subject" placeholder="Subject input">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="textarea">Textarea</label>
+                <div class="controls">
+                    <textarea id="textarea" rows="3"></textarea>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <button type="submit" class="btn">Send</button>
+            </div>
+
+
+        </fieldset>
+    </form>
+
+
+
+
+{% endblock %}
