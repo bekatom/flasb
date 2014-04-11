@@ -49,6 +49,7 @@
     <Content Include="static\js\sijax\sijax.js" />
     <Content Include="static\js\sijax\sijax_comet.js" />
     <Content Include="static\js\sijax\sijax_upload.js" />
+    <Content Include="templates\login.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="screenshots" />

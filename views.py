@@ -10,7 +10,7 @@ from flaskstarter import  app
 #### ERROR HANDLER #########
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template('404.html'),404
+	return render_template('404.html'),404
 
 
 
@@ -26,33 +26,61 @@ def main():
 @app.route('/contact',methods=['POST','GET'])
 @app.route('/contact')
 def contact():
-    if request.method =='POST':
-        message = 'This is post message'
-        return render_template('contact.html',message=message)
-    else:
-        return render_template('contact.html')
+	if request.method =='POST':
+		message = 'This is post message'
+		return render_template('contact.html',message=message)
+	else:
+		return render_template('contact.html')
 
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+	return render_template('about.html')
 
+
+
+@app.route('/login',methods=['POST','GET'])
+def login():
+	if request.method =='POST':
+		email = request.form['email']
+		password = request.form['password']
+
+		""" 
+			From mongo database
+			#user = User.objects.get(email = email)
+		"""
+		
+		if email == 'beka@vobi.ge' and password =='qwerty':
+			session['is_auth'] = True
+			session['email'] = email
+			return render_template('index.html',session=session)
+		else:
+			return render_template('login.html',message="Email or password is incorrect, try again")    
+	else:
+		return render_template('login.html')
 
 
 ## SIJAX METHODS ############
 def hello_handler(obj_response, hello_from, hello_to):
-    obj_response.alert('Hello from %s to %s' % (hello_from, hello_to))
-    obj_response.css('a', 'color', 'green')
+	obj_response.alert('Hello from %s to %s' % (hello_from, hello_to))
+	obj_response.css('a', 'color', 'green')
 
 def goodbye_handler(obj_response):
-    obj_response.alert('Goodbye, whoever you are.')
-    obj_response.css('a', 'color', 'red')
+	obj_response.alert('Goodbye, whoever you are.')
+	obj_response.css('a', 'color', 'red')
 
 
 
 
 def call_test_callbacks(g):
-    g.sijax.register_callback('say_hello', hello_handler)
-    g.sijax.register_callback('say_goodbye', goodbye_handler)
+	g.sijax.register_callback('say_hello', hello_handler)
+	g.sijax.register_callback('say_goodbye', goodbye_handler)
 
 
+## LOGOUT
+@app.route('/logout')
+def logout():
+	#remove username from session
+	session.pop('is_auth',None)
+	session.pop('email',None)
+	return  redirect(url_for('main'))
