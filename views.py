@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Blueprint, request, redirect, render_template, url_for,session, escape,jsonify,g
 from flask.views import MethodView
 from flask.ext.mongoengine.wtf import model_form
