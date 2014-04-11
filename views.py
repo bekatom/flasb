@@ -60,6 +60,28 @@ def login():
 		return render_template('login.html')
 
 
+@app.route('/registration',methods=['POST','GET'])
+def registration():
+	if request.method == 'POST':
+		email = request.form['email']
+		password = request.form['password']
+
+		"""
+		Registration in Mongo database
+
+		user = User(identification = identification,
+					email= email,
+					password = password
+					)
+		user.save()
+
+		"""
+		return  redirect(url_for('login',message="????? ?????????? ??????? ??????????? "
+												 "????? ??????? ???????????"))
+	else:
+		return  render_template('registration.html')
+
+
 ## SIJAX METHODS ############
 def hello_handler(obj_response, hello_from, hello_to):
 	obj_response.alert('Hello from %s to %s' % (hello_from, hello_to))
