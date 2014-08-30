@@ -1,6 +1,6 @@
-Starter template Flask with MongoDB,Sijax & Bootstrap 
+Starter template Flask with MongoDB & Bootstrap 
 
-![flasb](https://raw.github.com/btomashvili/flasb/master/screenshots/flasb.jpg "Starter template")
+![flasb](https://raw.github.com/btomashvili/flasb/master/screenshots/flasb.PNG "Starter template")
 
 To install requirements
 
