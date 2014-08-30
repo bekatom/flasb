@@ -10,7 +10,7 @@ class ProductionConfig(object):
 class ProductionConfigHome(object):
     DEBUG = True
     TESTING = False
-    MONGODB_SETTINGS = {'HOST': '192.168.117.128', 'DB': 'lib_express'}
+    MONGODB_SETTINGS = {'HOST': 'localhost', 'DB': 'test'}
     SECRET_KEY = 'flask+mongoengine=<3'
     DEBUG_TB_INTERCEPT_REDIRECTS = False
 
