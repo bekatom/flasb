@@ -3,5 +3,4 @@ flask-script
 WTForms
 mongoengine
 flask-mongoengine
-flask-sijax
 simplejson
