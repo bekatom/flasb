@@ -3,7 +3,7 @@ __author__ = 'Beka'
 import datetime
 from flaskstarter import db
 from mongoengine import EmbeddedDocumentField,EmbeddedDocument
-
+from mongoengine.queryset import DoesNotExist
 
 class CompanyDetails(EmbeddedDocument):
     identification = db.StringField(max_length=100)
@@ -46,6 +46,13 @@ class User(db.Document):
 
     #def __unicode__(self):
     #    return self.identification
+
+    def get_user(self, email, password):
+        try:
+            user = User.objects.get(email=email, password=password)
+            return user
+        except DoesNotExist:
+            return None
 
     def __repr__(self):
         return '<User %r>' % (str(self.id))

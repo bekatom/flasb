@@ -7,12 +7,6 @@ from mongoengine.queryset import DoesNotExist
 from flaskstarter import app, login_manager
 
 
-def get_user(email, password):
-    try:
-        user = User.objects.get(email=email, password=password)
-        return user
-    except DoesNotExist:
-        return None
 
 
 @login_manager.user_loader
@@ -26,7 +20,8 @@ def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        user = get_user(email, password)
+        u = User()
+        user = u.get_user(email, password)
         if user is not None:
             login_user(user)  # this is flask login
             return redirect(url_for('main'))

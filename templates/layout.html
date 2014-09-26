@@ -1,25 +1,18 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title> Vobi Cloud </title>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title> Flasb </title>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
-
     <!-- Bootstrap -->
     <link href="{{ url_for('static',filename='css/bootstrap.css') }}" rel="stylesheet" media="screen">
     <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet" media="screen">
 
 </head>
-<body>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-
-
+<body ng-app="vobi-app">
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -74,14 +67,20 @@
             </div><!--/.nav-collapse -->
         </div>
     </div>
-
-
-
     <div class="container">
-        
         {% block body %}{% endblock %}
-
-    </div>
+  </div>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='public/app.js') }}"></script>
+<script>
+$.noConflict();
+jQuery( document ).ready(function( $ ) {
+  // Code that uses jQuery's $ can follow here.
+});
+// Code that uses other library's $ can follow here.
+</script>
 
 </body>
 </html>
