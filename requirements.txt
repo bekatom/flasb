@@ -4,3 +4,4 @@ WTForms
 mongoengine
 flask-mongoengine
 simplejson
+flask-login

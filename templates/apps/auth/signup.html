@@ -1,0 +1,30 @@
+{% extends 'apps/auth/login.html' %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+      <div class="container">
+
+      <form class="form-signin" role="form" method="post" action="/signup">
+       <h4 class="form-signin-heading"><a href="/login">ავტორიზაცია</a>  / <a href="/signup"> რეგისტრაცია</a> </h4>
+
+        <input type="email" name="email" class="form-control" placeholder="ელ-ფოსტა" required>
+        <input type="email" name="remail" class="form-control" placeholder="გაიმეორეთ ელ-ფოსტა" required>
+        <input type="password" name="password" class="form-control" placeholder="პაროლი" required>
+        <input type="password" name="rpassword" class="form-control" placeholder="გაიმეორეთ პაროლი" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">რეგისტრაცია</button>
+
+      </form>
+
+    </div>
+
+{%  endblock %}

@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title> Flasb Template </title>
+    <title> Vobi Cloud </title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,7 +35,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="#">Main Navigation</a></li>
 
-                    {%  if session.is_auth %}
+                   {% if current_user.is_authenticated() %}
                     <!-- TURN OFF COMMENTS TO -->
                    <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"> nav1<b class="caret"></b></a>
@@ -65,15 +65,11 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
 
-                    {% if not session.is_auth %}
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/registration">Registration</a></li>
+                  {% if current_user.is_authenticated() %}
+                    <li class="active"><a href="./">{{ current_user.email }}</a></li>
+                     <li><a href="/logout">გამოსვლა</a></li>
                     {% endif %}
 
-                    {%  if session %}
-                    <li class="active"><a href="./">{{ session.email }}</a></li>
-                    <li><a href="/logout">Logout</a></li>
-                    {% endif %}
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
