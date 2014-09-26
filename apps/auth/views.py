@@ -5,14 +5,25 @@ from flask.ext.login import login_user, logout_user, current_user, login_require
 from models import User
 from mongoengine.queryset import DoesNotExist
 from flaskstarter import app, login_manager
+import requests
 
 
+def sendletter(user, email, password):
+    subject = u"თქვენ წარმათებით გარეთ რეგისტრაცია VOBI Cloud სერვისზე"
+    body = u"ავტორიზაციისთვის გამოიყენეთ შემდეგი პარამეტრები %s , პაროლი %s " % (email, password)
+    emailto = email
+    return requests.post(
+        "https://api.mailgun.net/v2/sandboxc3eeb6601b344b2f94eea98103573f69.mailgun.org/messages",
+        auth=("api", "key-930hiya4r1jeo82zqjo8m8m2ptm08gj3"),
+        data={"from": "Mailgun Sandbox <postmaster@sandboxc3eeb6601b344b2f94eea98103573f69.mailgun.org>",
+              "to": "beka <beka@vobi.ge>",
+              "subject": subject,
+              "text": body})
 
 
 @login_manager.user_loader
 def load_user(id):
     return User.objects.get(pk=id)
-
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -48,6 +59,7 @@ def signup():
             user.password = request.form['password']
             # user.Applicant = request.form['Email']
             user.save()
+            sendletter(user, user.email, user.password)  # send letter to email
             flash(u"თქვენ წარმატებით გაიარეთ რეგსიტრაცია, გთხოვთ იხილოთ თქვენი ელ-ფოსტა")
             return redirect(url_for('main'))
         except Exception, e:
