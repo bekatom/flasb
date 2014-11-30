@@ -10,12 +10,13 @@
   {% endif %}
 {% endwith %}
 
-  <div class="container">
+  <div class="row">
   <div style="width:60%; margin: 0 auto;margin-top:80px;">
-      <form class="form-signin" role="form" method="post" action="/signup">
+      <form class="form-horizontal" role="form" method="post" action="/signup">
         <fieldset>
            <legend><a href="/login">Login</a>  / <a href="/signup"> Signup</a> </legend>
             <div class="form-group">
+              <label for="email" class="col-lg-2 control-label">Email</label>
               <div class="col-lg-10">
                 <input type="text" class="form-control" name="email" id="email" placeholder="email" required="true" autofocus="">
               </div>
@@ -23,6 +24,7 @@
 
 
             <div class="form-group">
+              <label for="remail" class="col-lg-2 control-label">Repeat Email</label>
               <div class="col-lg-10">
                 <input type="text" class="form-control" name="remail" id="remail" placeholder="repeat email" required="true">
               </div>
@@ -30,18 +32,20 @@
 
 
             <div class="form-group">
+              <label for="password" class="col-lg-2 control-label">Password</label>
               <div class="col-lg-10">
                 <input type="password" class="form-control" name="password" id="password" placeholder="password" required="true">
               </div>
             </div>
 
               <div class="form-group">
+              <label for="rpassword" class="col-lg-2 control-label">Repeat Password</label>
              <div class="col-lg-10">
                 <input type="password" class="form-control" name="rpassword" id="rpassword" placeholder="repeat password" required="true">
               </div>
             </div>
             <div class="form-group">
-              <div class="col-lg-10">
+              <div class="col-lg-10 col-lg-offset-2">
                 <button type="submit" class="btn btn-primary">Signup</button>
               </div>
             </div>
