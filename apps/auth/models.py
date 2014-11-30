@@ -21,6 +21,8 @@ class User(db.Document):
     create_date = db.DateTimeField(default=datetime.datetime.now)
     is_admin = db.BooleanField(default=False)
     is_stoped = db.BooleanField(default=False)
+    theme = db.StringField(max_length=100)
+    app_name = db.StringField(max_length=100)
     companies = db.ListField(EmbeddedDocumentField(CompanyDetails))
 
     def is_authenticated(self):
@@ -40,6 +42,9 @@ class User(db.Document):
 
     def get_email(self):
         return self.email
+
+    def get_theme(self):
+        return self.theme
 
     def get_fullname(self):
         return self.fullname

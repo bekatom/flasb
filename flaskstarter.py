@@ -7,13 +7,10 @@ from flask.ext.login import LoginManager
 import os
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path='')
 app.config.from_object('config.ProductionConfig')
 login_manager = LoginManager()
 login_manager.init_app(app)
-
-
-
 
 
 db = MongoEngine(app)

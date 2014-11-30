@@ -7,7 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="{{ url_for('static',filename='css/bootstrap-yeti.min.css') }}" rel="stylesheet" media="screen">
+    {%  if current_user.theme %}
+         <link href="/css/bootthemes/{{ current_user.theme }}.css" rel="stylesheet" media="screen">
+    {% else %}
+         <link href="{{ url_for('static',filename='css/bootthemes/yeti.css') }}" rel="stylesheet" media="screen">
+    {% endif %}
+
     <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet" media="screen">
 </head>
 <body ng-app="vobi-app">
@@ -20,7 +25,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Flasb</a>
+                <a class="navbar-brand" href="/">
+
+                    {% if current_user.app_name %}
+                          {{ current_user.app_name  }}
+                    {% else %}
+                      FLASB
+                    {% endif %}
+
+                </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -56,7 +69,8 @@
 
                   {% if current_user.is_authenticated() %}
                     <li class="active"><a href="./">{{ current_user.email }}</a></li>
-                     <li><a href="/logout">გამოსვლა</a></li>
+                     <li><a href="/settings">Settings</a></li>
+                     <li><a href="/logout">Logout</a></li>
                     {% endif %}
 
                 </ul>

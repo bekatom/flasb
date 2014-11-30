@@ -49,7 +49,7 @@ def signup():
     if request.method == 'POST':
         try:
             if request.form['email'] != request.form['remail']:
-                flash(u"ელ-ფოსტა არავალიდურია")
+                flash(u"Not valid email")
                 return redirect(url_for('signup'))
             if request.form['password'] != request.form['rpassword']:
                 flash(u"პაროლი არ ემთხვევა , გთხოვთ ცადოთ თავიდან")
@@ -57,6 +57,8 @@ def signup():
 
             user.email = request.form['email']
             user.password = request.form['password']
+            user.theme = 'yeti' # default teheme after registratiosn
+            user.app_name = 'FLASB'
             # user.Applicant = request.form['Email']
             user.save()
             sendletter(user, user.email, user.password)  # send letter to email
