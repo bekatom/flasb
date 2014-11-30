@@ -4,8 +4,8 @@ from flaskstarter import app
 from flask.ext.login import login_required ,current_user
 
 
-@app.route('/users', methods=['POST', 'GET'])
-@app.route('/users')
+@app.route('/user', methods=['POST', 'GET'])
+@app.route('/user')
 @login_required
-def main_users():
-    return render_template('modules/users/index.html')
+def main_user():
+    return render_template('modules/user/index.html')

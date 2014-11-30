@@ -10,7 +10,7 @@
     <div>
         <ul class="breadcrumb">
           <li><a href="/appmaker/modulemaker">Create Module</a></li>
-          <li><a href="/appmaker/object">Create Object</a></li>
+          <li><a href="/appmaker/objectmaker">Create Object</a></li>
         </ul>
 
     </div>
@@ -29,20 +29,17 @@
       <tbody>
        {% for itm in current_user.modules %}
         <tr>
-            <td> {{  itm.api_name }}</td>
+            <td><a href="/appmaker/module/{{ itm.id }}">{{  itm.api_name }}</a></td>
             <td> {{  itm.name }}</td>
             <td> {{  itm.description }}</td>
             <td> Edit</td>
-            <td><a href="appmaker/deletemodule/{{ itm.api_name }}">Delete</a> </td>
+            <td><a href="appmaker/deletemodule/{{ itm.id }}">Delete</a> </td>
         </tr>
       {% endfor %}
       </tbody>
     </table>
 
 
-       {%  for itms in current_user.modules %}
-
-       {% endfor %}
 
     </div>
 

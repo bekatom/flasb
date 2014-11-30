@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+<h2>Module {{  module.name }}</h2>
+
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>API Name</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+       {% for itm in module.bussiness_objects %}
+        <tr>
+            <td><a href="/appmaker/module/app/{{ itm.id }}">{{  itm.api_name }}</a></td>
+            <td> {{  itm.name }}</td>
+            <td> {{  itm.description }}</td>
+            <td> Edit</td>
+            <td><a href="appmaker/app/delete/{{ itm.id }}">Delete</a> </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+
+
+{% endblock %}

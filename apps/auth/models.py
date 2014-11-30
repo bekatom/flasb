@@ -2,10 +2,9 @@
 __author__ = 'Beka'
 import datetime
 from flaskstarter import db
-from mongoengine import EmbeddedDocumentField,EmbeddedDocument
+from mongoengine import EmbeddedDocumentField, EmbeddedDocument, ReferenceField
 from mongoengine.queryset import DoesNotExist
-from appmaker.module_maker.models import Module,Objects
-
+from appmaker.module_maker.models import Module, BussinessObject
 
 
 class User(db.Document):
@@ -19,8 +18,8 @@ class User(db.Document):
     is_stoped = db.BooleanField(default=False)
     theme = db.StringField(max_length=100)
     app_name = db.StringField(max_length=100)
-    modules = db.ListField(EmbeddedDocumentField(Module))
-    module_objects = db.ListField(EmbeddedDocumentField(Objects))
+    modules = db.ListField(ReferenceField(Module))
+    module_objects = db.ListField(ReferenceField(BussinessObject))
 
     def is_authenticated(self):
         return True
@@ -46,7 +45,7 @@ class User(db.Document):
     def get_fullname(self):
         return self.fullname
 
-    #def __unicode__(self):
+    # def __unicode__(self):
     #    return self.identification
 
     def get_user(self, email, password):

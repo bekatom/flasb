@@ -6,7 +6,7 @@ from apps.auth.models import User
 
 
 from module_maker.views import *
-
+from object_maker.views import *
 
 
 
@@ -16,5 +16,10 @@ def appmaker():
     return render_template('appmaker/index.html')
 
 
-
+@app.route('/appmaker/module/<module_id>', methods=['POST', 'GET'])
+@login_required
+def module_page(module_id=None):
+    if module_id is not None:
+        module = Module.objects.get(pk=module_id)
+        return render_template('appmaker/module.html', module=module)
 
