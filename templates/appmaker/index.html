@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+<h2>Application Maker</h2>
+
+    <div class="row">
+
+    <div>
+        <ul class="breadcrumb">
+          <li><a href="/appmaker/modulemaker">Create Module</a></li>
+          <li><a href="/appmaker/object">Create Object</a></li>
+        </ul>
+
+    </div>
+
+    <h3> Modules</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>API Name</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+       {% for itm in current_user.modules %}
+        <tr>
+            <td> {{  itm.api_name }}</td>
+            <td> {{  itm.name }}</td>
+            <td> {{  itm.description }}</td>
+            <td> Edit</td>
+            <td><a href="appmaker/deletemodule/{{ itm.api_name }}">Delete</a> </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+
+       {%  for itms in current_user.modules %}
+
+       {% endfor %}
+
+    </div>
+
+
+{% endblock %}

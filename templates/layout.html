@@ -37,7 +37,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">Main Navigation</a></li>
+
+                    {% for itm in current_user.modules %}
+                         <li><a href="/{{ itm.api_name }}">{{ itm.api_name }}</a></li>
+                    {% endfor %}
 
                    {% if current_user.is_authenticated() %}
                     <!-- TURN OFF COMMENTS TO -->

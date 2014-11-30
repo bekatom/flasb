@@ -17,6 +17,10 @@ db = MongoEngine(app)
 
 from views import *
 from apps.auth.views import *
+from appmaker.views import *
+
+
+
 
 login_manager.login_view = 'login'
 

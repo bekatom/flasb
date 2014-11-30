@@ -4,13 +4,9 @@ import datetime
 from flaskstarter import db
 from mongoengine import EmbeddedDocumentField,EmbeddedDocument
 from mongoengine.queryset import DoesNotExist
+from appmaker.module_maker.models import Module,Objects
 
-class CompanyDetails(EmbeddedDocument):
-    identification = db.StringField(max_length=100)
-    fav_id = db.StringField(max_length=150)
-    comments = db.ListField(db.StringField(max_length=150))
-    color = db.StringField(max_length=100)
-    create_date = db.DateTimeField(default=datetime.datetime.now)
+
 
 class User(db.Document):
     email = db.StringField(max_length=100)
@@ -23,7 +19,8 @@ class User(db.Document):
     is_stoped = db.BooleanField(default=False)
     theme = db.StringField(max_length=100)
     app_name = db.StringField(max_length=100)
-    companies = db.ListField(EmbeddedDocumentField(CompanyDetails))
+    modules = db.ListField(EmbeddedDocumentField(Module))
+    module_objects = db.ListField(EmbeddedDocumentField(Objects))
 
     def is_authenticated(self):
         return True
