@@ -2,7 +2,7 @@
 import datetime
 from flask import url_for
 from flaskstarter import db
-from mongoengine import ReferenceField
+from mongoengine import ReferenceField, CASCADE
 
 
 class ObjectFields(db.Document):
@@ -33,5 +33,5 @@ class Module(db.Document):
     name = db.StringField(max_length=100)
     description = db.StringField(max_length=100)
     create_date = db.DateTimeField(default=datetime.datetime.now)
-    bussiness_objects = db.ListField(ReferenceField(BussinessObject))
+    bussiness_objects = db.ListField(ReferenceField(BussinessObject, reverse_delete_rule=CASCADE))
 

@@ -19,11 +19,11 @@
       <tbody>
        {% for itm in module.bussiness_objects %}
         <tr>
-            <td><a href="/appmaker/module/app/{{ itm.id }}">{{  itm.api_name }}</a></td>
+            <td><a href="/appmaker/module/obj/{{ itm.id }}">{{  itm.api_name }}</a></td>
             <td> {{  itm.name }}</td>
             <td> {{  itm.description }}</td>
             <td> Edit</td>
-            <td><a href="appmaker/app/delete/{{ itm.id }}">Delete</a> </td>
+            <td><a href="/appmaker/obj/delete/{{ module.id }}/{{ itm.id }}">Delete</a> </td>
         </tr>
       {% endfor %}
       </tbody>

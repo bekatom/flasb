@@ -42,3 +42,7 @@ def delete_module(module_id=None):
             return redirect('/appmaker')
     except Exception, e:
         print e
+
+
+
+

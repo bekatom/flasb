@@ -23,3 +23,10 @@ def module_page(module_id=None):
         module = Module.objects.get(pk=module_id)
         return render_template('appmaker/module.html', module=module)
 
+
+@app.route('/appmaker/module/obj/<obj_id>', methods=['POST','GET'])
+@login_required
+def bussiness_object(obj_id=None):
+    if obj_id is not None:
+        obj = BussinessObject.objects.get(pk=obj_id)
+        return render_template('appmaker/object.html', obj=obj)

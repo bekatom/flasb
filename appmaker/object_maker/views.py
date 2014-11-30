@@ -6,6 +6,8 @@ from apps.auth.models import User
 from appmaker.module_maker.models import BussinessObject, Module
 
 
+
+
 @app.route('/appmaker/objectmaker', methods=['POST', 'GET'])
 @login_required
 def objectmaker():
@@ -26,3 +28,16 @@ def objectmaker():
 
     modules = current_user.modules
     return render_template('appmaker/objectmaker/index.html',modules = modules)
+
+
+@app.route('/appmaker/obj/delete/<module_id>/<obj_id>', methods=['POST', 'GET'])
+@login_required
+def obj_delete(module_id=None, obj_id=None):
+    try:
+        if obj_id is not None:
+            obj = BussinessObject.objects.get(pk=obj_id)
+            obj.delete()
+            return redirect('/appmaker/module/%s' %module_id)
+
+    except Exception, e:
+        print e
