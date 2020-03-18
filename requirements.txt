@@ -5,3 +5,4 @@ mongoengine
 flask-mongoengine
 simplejson
 flask-login
+pytonik
